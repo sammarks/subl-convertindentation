@@ -30,6 +30,6 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
 
 class ConvertIndentionOnOpen(sublime_plugin.EventListener):
     def on_load(self, view):
-        settings = sublime.load_settings('convert-indentation.sublime-settings')
+        settings = sublime.load_settings('Convert Indentation.sublime-settings')
         if settings.get('convert_on_open', True):
             view.run_command('convert_indentation')
