@@ -8,7 +8,7 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
 
         # Now check syntax-specific settings.
         syntax = self.view.settings().get('syntax')
-        segments = split(syntax, '/')
+        segments = syntax.split('/')
         language = ''
         for segment in segments:
             if (segment.endswith('.tmLanguage')):
