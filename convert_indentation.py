@@ -8,9 +8,12 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
 
         # Now check syntax-specific settings.
         syntax = self.view.settings().get('syntax')
-        syntax_settings = sublime.load_settings(syntax + '.sublime-settings')
-
-        print(syntax)
+        segments = split(syntax, '/')
+        language = ''
+        for (segment in segments):
+            if (segment.endswith('.tmLanguage')):
+                language = segment.replace('.tmLanguage', '')
+        syntax_settings = sublime.load_settings(language + '.sublime-settings')
 
         gtab_size = global_settings.get('tab_size')
         gtranslate_to_spaces = global_settings.get('translate_tabs_to_spaces')
