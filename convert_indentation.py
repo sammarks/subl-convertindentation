@@ -10,7 +10,7 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
         syntax = self.view.settings().get('syntax')
         segments = split(syntax, '/')
         language = ''
-        for (segment in segments):
+        for segment in segments:
             if (segment.endswith('.tmLanguage')):
                 language = segment.replace('.tmLanguage', '')
         syntax_settings = sublime.load_settings(language + '.sublime-settings')
