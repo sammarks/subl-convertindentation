@@ -7,7 +7,7 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
         global_settings = sublime.load_settings('Preferences.sublime-settings')
 
         # Now check syntax-specific settings.
-        syntax = view.settings().get('syntax')
+        syntax = self.view.settings().get('syntax')
         syntax_settings = sublime.load_settings(syntax + '.sublime-settings')
 
         gtab_size = global_settings.get('tab_size')
