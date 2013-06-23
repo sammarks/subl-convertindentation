@@ -1,4 +1,4 @@
-import sublime, sublime_plugin
+import sublime, sublime_plugin, time
 
 class ConvertIndentationCommand(sublime_plugin.TextCommand):
     def run(self, edit):
