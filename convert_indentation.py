@@ -47,6 +47,7 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
             print("Converting Indentation")
             self.view.run_command('unexpand_tabs')
             print("Point D")
+            return
             self.view.settings().set('tab_size', gtab_size)
             print("Point E")
             self.view.run_command('expand_tabs')
