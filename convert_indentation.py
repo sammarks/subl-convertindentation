@@ -18,8 +18,6 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
         gtab_size = global_settings.get('tab_size')
         gtranslate_to_spaces = global_settings.get('translate_tabs_to_spaces')
 
-        print("Point A")
-
         if (syntax_settings):
             if (syntax_settings.get('tab_size')):
                 gtab_size = syntax_settings.get('tab_size')
@@ -33,30 +31,19 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
         vtranslate_to_spaces = self.view.settings().get('translate_tabs_to_spaces')
         vtab_size = self.view.settings().get('tab_size')
 
-        print("Point B")
-
         if gtranslate_to_spaces == False:
             self.view.run_command('unexpand_tabs')
             self.view.settings().set('tab_size', gtab_size)
             return
 
-        print("Point C")
-        return
-
         # If any of them are not equal, change it up.
         if (vtranslate_to_spaces == True and vtab_size != gtab_size):
             print("Converting Indentation")
+            sleep(0.01)
             self.view.run_command('unexpand_tabs')
-            print("Point D")
-            return
             self.view.settings().set('tab_size', gtab_size)
-            print("Point E")
             self.view.run_command('expand_tabs')
-            print("Point F")
             self.view.settings().set('translate_tabs_to_spaces', True)
-
-        print("Point G")
-        return
 
         sublime.status_message('Automatically updated indentation for document')
 
