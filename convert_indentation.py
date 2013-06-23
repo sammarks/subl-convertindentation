@@ -3,13 +3,31 @@ import sublime, sublime_plugin
 class ConvertIndentationCommand(sublime_plugin.TextCommand):
     def run(self, edit):
 
+        # Check the Global Settings first.
         global_settings = sublime.load_settings('Preferences.sublime-settings')
+
+        # Now check syntax-specific settings.
+        syntax = self.view.settings().get('syntax')
+        segments = syntax.split('/')
+        language = ''
+        for segment in segments:
+            if (segment.endswith('.tmLanguage')):
+                language = segment.replace('.tmLanguage', '')
+        syntax_settings = sublime.load_settings(language + '.sublime-settings')
 
         gtab_size = global_settings.get('tab_size')
         gtranslate_to_spaces = global_settings.get('translate_tabs_to_spaces')
 
+<<<<<<< HEAD
         print("Point A")
         return
+=======
+        if (syntax_settings):
+            if (syntax_settings.get('tab_size')):
+                gtab_size = syntax_settings.get('tab_size')
+            if (syntax_settings.get('translate_tabs_to_spaces')):
+                gtranslate_to_spaces = syntax_settings.get('translate_tabs_to_spaces')
+>>>>>>> 7e40c776abd639a1c165b45c018ee937fa8919df
 
         # Now detect the indentation.
         self.view.run_command('detect_indentation')
