@@ -8,6 +8,8 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
         gtab_size = global_settings.get('tab_size')
         gtranslate_to_spaces = global_settings.get('translate_tabs_to_spaces')
 
+        print("Point A")
+
         # Now detect the indentation.
         self.view.run_command('detect_indentation')
 
@@ -15,8 +17,12 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
         vtranslate_to_spaces = self.view.settings().get('translate_tabs_to_spaces')
         vtab_size = self.view.settings().get('tab_size')
 
+        print("Point B")
+
         if gtranslate_to_spaces == False:
-            return # Why are you using this plugin then?
+            self.view.run_command('unexpand_tabs')
+            self.view.settings().set('tab_size', gtab_size)
+            return
 
         # If any of them are not equal, change it up.
         if (vtranslate_to_spaces == True and vtab_size != gtab_size):
