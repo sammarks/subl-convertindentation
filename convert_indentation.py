@@ -41,6 +41,7 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
             return
 
         print("Point C")
+        return
 
         # If any of them are not equal, change it up.
         if (vtranslate_to_spaces == True and vtab_size != gtab_size):
