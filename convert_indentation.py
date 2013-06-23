@@ -9,6 +9,7 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
         gtranslate_to_spaces = global_settings.get('translate_tabs_to_spaces')
 
         print("Point A")
+        return
 
         # Now detect the indentation.
         self.view.run_command('detect_indentation')
