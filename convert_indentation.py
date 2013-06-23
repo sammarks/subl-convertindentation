@@ -39,7 +39,7 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
         # If any of them are not equal, change it up.
         if (vtranslate_to_spaces == True and vtab_size != gtab_size):
             print("Converting Indentation")
-            sleep(0.01)
+            time.sleep(0.01)
             self.view.run_command('unexpand_tabs')
             self.view.settings().set('tab_size', gtab_size)
             self.view.run_command('expand_tabs')
