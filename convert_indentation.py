@@ -19,7 +19,6 @@ class ConvertIndentationCommand(sublime_plugin.TextCommand):
         gtranslate_to_spaces = global_settings.get('translate_tabs_to_spaces')
 
         print("Point A")
-        return
 
         if (syntax_settings):
             if (syntax_settings.get('tab_size')):
